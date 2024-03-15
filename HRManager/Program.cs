@@ -1,4 +1,6 @@
-﻿namespace HRManager
+﻿using System.Numerics;
+
+namespace HRManager
 {
     internal class Program
     {
@@ -8,6 +10,8 @@
             hourEmp.Hours.Add(80.0);
             hourEmp.Hours.Add(90.0);
             hourEmp.Hours.Add(70.0);
+            hourEmp.Phone = "867-5309";
+            hourEmp.Email = "bigdaddy@microsoft.com";
 
             DisplayEmployeeInfo(hourEmp, 0, 3);
 
@@ -15,6 +19,8 @@
             salaryEmp.EmpNum = 2;
             salaryEmp.FirstName = "Alan";
             salaryEmp.LastName = "Turing";
+            salaryEmp.Phone = "1-800-FLOWERS";
+            salaryEmp.Email = "aitester@Microsoft.com";
             salaryEmp.Salary = 40000.0M;
             salaryEmp.Hours.Add(80.0);
             salaryEmp.Hours.Add(80.0);
@@ -49,6 +55,22 @@
                     Console.WriteLine("Salary: " + salEmp.Salary);
                 }
             }
+
+            PhoneBook phoneBook = new PhoneBook();
+
+            Department department = new Department("Microsoft");
+
+            department.Phone = "555-555";
+            department.Description = "We believe in what people make possible.";
+            department.Email = "customerservice@microsoft.com";
+            department.WebSite = "www.microsoft.com";
+
+            phoneBook.PhoneBookEntries.Add(hourEmp);
+            phoneBook.PhoneBookEntries.Add(salaryEmp);
+            phoneBook.PhoneBookEntries.Add(department);
+
+            Console.Write("\n\n---Phonebook---\n\n");
+            Console.WriteLine(phoneBook.GetPhoneBook());
 
             Console.Write("Press any key to quit...");
             Console.ReadKey();
